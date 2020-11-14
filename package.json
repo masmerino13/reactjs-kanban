@@ -1,0 +1,20 @@
+{
+  "name": "tasknator",
+  "version": "1.0.0",
+  "description": "kaban test app",
+  "main": "index.js",
+  "scripts": {
+    "dev": "poi --serve",
+    "build": "poi --prod"
+  },
+  "author": "ricardo",
+  "license": "ISC",
+  "devDependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "dependencies": {
+    "poi": "^12.10.3",
+    "react-hot-loader": "^4.13.0"
+  }
+}
