@@ -5,7 +5,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        Tasknator
+        Tasknator app
       </div>
     )
   }
