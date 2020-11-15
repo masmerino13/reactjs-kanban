@@ -1,0 +1,37 @@
+.MainSidebar {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  min-height: 100vh;
+  transition: margin .25s ease-out;
+  background-color: $blue_300;
+  padding: 0;
+
+  &Heading {
+    padding: 0.875rem 1.25rem;
+    font-size: 1.2rem;
+    background-color: $blue_500;
+    color: $white;
+    font-weight: 600;
+  }
+
+  &Item {
+    padding: 10px 8px;
+    color: $white;
+    cursor: pointer;
+    transition: all .25s ease-out;
+
+    &:hover {
+      background-color: $blue_200;
+    }
+  }
+
+  &Autor {
+    text-align: center;
+    color: $white;
+    font-size: $body_sm;
+    background-color: $blue_500;
+    margin: 0;
+    padding: 4px 0;
+  }
+}
