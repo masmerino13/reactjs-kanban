@@ -1,63 +1,18 @@
 import React, { useState, useEffect } from "react";
 import arrayMove from 'array-move';
 import _isEmpty from 'lodash/isEmpty';
+import { useStoreState } from 'easy-peasy';
 
 import { SortableList } from './sortableList';
 
 const SortableComponent = () => {
   const [isHovering, setIsHovering] = useState('');
-  const [collections, setCollection] = useState([
-    {
-      key: 'to-do',
-      name: 'To Do',
-      items: [
-        {
-          id: 1,
-          title: 'Create initial setup for Kaban list',
-          description: 'Loremp ipsum sit ammet',
-          assignee: 'Ricardo Merino',
-          tags: ['tag 1', 'tag 2'],
-          due: Date.now()
-        }
-      ]
-    },
-    {
-      key: 'in-progress',
-      name: 'In Progress',
-      items: [
-        {
-          id: 2,
-          title: 'Task 2',
-          description: 'Loremp ipsum sit ammet',
-          assignee: 'Ricardo Merino',
-          tags: ['tag 1', 'tag 2'],
-          due: Date.now()
-        }
-      ]
-    },
-    {
-      key: 'done',
-      name: 'Done',
-      items: [
-        {
-          id: 3,
-          title: 'Task 3',
-          description: 'Loremp ipsum sit ammet',
-          assignee: 'Ricardo Merino',
-          tags: ['tag 1', 'tag 2'],
-          due: Date.now()
-        },
-        {
-          id: 4,
-          title: 'Task 4',
-          description: 'Loremp ipsum sit ammet',
-          assignee: 'Ricardo Merino',
-          tags: ['tag 1', 'tag 2'],
-          due: Date.now()
-        }
-      ]
-    }
-  ])
+  const [collections, setCollection] = useState([])
+  const list = useStoreState((state) => state.collections.list);
+
+  useEffect(() => {
+    setCollection(list)
+  })
 
   const onSortEnd = ({ oldIndex, newIndex, collection }) => {
     const hoveredCollection = collections.find(co => { return co.key === isHovering})
