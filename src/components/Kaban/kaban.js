@@ -39,8 +39,8 @@ const SortableComponent = () => {
       const hoveredItems = hoveredCollection.items
       const currentItem = parentItems[oldIndex]
 
-      parentItems.splice(newIndex, 1)
-      hoveredItems.splice(newIndex, 0, currentItem);
+      hoveredItems.splice(newIndex, 0, currentItem)
+      parentItems.splice(oldIndex, 1)
 
       const newCollectionsSet = collections.map(co => {
         if (co.key === collection) {
