@@ -1,20 +1,22 @@
-import React from 'react';
+import React from 'react'
 import {
   SortableContainer
-} from "react-sortable-hoc";
+} from "react-sortable-hoc"
 
-import { SortableItem } from '../sortableItem';
+import { SortableItem } from '../sortableItem'
+
+import './sortableList.scss'
 
 const SortableList = SortableContainer(
-  ({ setIsHovering, isHovering, collections }) => (
-    <div>
+  ({ setIsHovering, collections }) => (
+    <div className='t_SortableList'>
       {
-        collections.map(collection => (<div
+        collections.map(collection => (<div className='bg-light t_SortableListColumn'
           key={collection.key}
           onMouseEnter={() => setIsHovering(collection.key)}
           onMouseLeave={() => setIsHovering('')}
         >
-          <p>{collection.name}</p>
+          <div className='t_SortableListColumn_Title'>{collection.name}</div>
           {collection.items.map((item, index) => (
             <SortableItem
               key={`${collection.key}-${index}`}
@@ -23,11 +25,10 @@ const SortableList = SortableContainer(
               collection={collection.key}
             />
           ))}
-          <hr />
         </div>))
       }
     </div>
   )
-);
+)
 
 export default SortableList;

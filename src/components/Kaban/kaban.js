@@ -4,7 +4,7 @@ import _isEmpty from 'lodash/isEmpty';
 
 import { SortableList } from './sortableList';
 
-const SortableComponent = props => {
+const SortableComponent = () => {
   const [isHovering, setIsHovering] = useState('');
   const [collections, setCollection] = useState([
     {
@@ -13,7 +13,11 @@ const SortableComponent = props => {
       items: [
         {
           id: 1,
-          title: 'Task 1'
+          title: 'Create initial setup for Kaban list',
+          description: 'Loremp ipsum sit ammet',
+          assignee: 'Ricardo Merino',
+          tags: ['tag 1', 'tag 2'],
+          due: Date.now()
         }
       ]
     },
@@ -23,7 +27,11 @@ const SortableComponent = props => {
       items: [
         {
           id: 2,
-          title: 'Task 2'
+          title: 'Task 2',
+          description: 'Loremp ipsum sit ammet',
+          assignee: 'Ricardo Merino',
+          tags: ['tag 1', 'tag 2'],
+          due: Date.now()
         }
       ]
     },
@@ -33,11 +41,19 @@ const SortableComponent = props => {
       items: [
         {
           id: 3,
-          title: 'Task 3'
+          title: 'Task 3',
+          description: 'Loremp ipsum sit ammet',
+          assignee: 'Ricardo Merino',
+          tags: ['tag 1', 'tag 2'],
+          due: Date.now()
         },
         {
           id: 4,
-          title: 'Task 4'
+          title: 'Task 4',
+          description: 'Loremp ipsum sit ammet',
+          assignee: 'Ricardo Merino',
+          tags: ['tag 1', 'tag 2'],
+          due: Date.now()
         }
       ]
     }

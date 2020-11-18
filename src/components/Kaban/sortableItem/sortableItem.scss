@@ -1,0 +1,27 @@
+.t_sortableItem {
+  padding: 4px;
+  border: 1px solid $light_blue;
+  background-color: $white;
+  border-radius: 2px;
+  cursor: pointer;
+
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  &_Title {
+    font-size: $body_sm;
+    font-weight: 600;
+    padding-bottom: 10px;
+  }
+
+  &Footer {
+    display: flex;
+    justify-content: space-between;
+
+    &_Due {
+      font-size: $body_sm;
+      color: $gray_200;
+    }
+  }
+}

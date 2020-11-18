@@ -1,0 +1,17 @@
+.t_SortableList {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+
+  &Column {
+    width: 20rem;
+    flex-basis: 30%;
+    border: 1px solid $light_blue;
+    padding: 4px;
+
+    &_Title {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+  }
+}
