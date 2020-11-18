@@ -16,7 +16,7 @@ const SortableList = SortableContainer(
           onMouseEnter={() => setIsHovering(collection.key)}
           onMouseLeave={() => setIsHovering('')}
         >
-          <div className='t_SortableListColumn_Title'>{collection.name}</div>
+          <div className='t_SortableListColumn_Title'>{collection.title}</div>
           {collection.items.map((item, index) => (
             <SortableItem
               key={`${collection.key}-${index}`}
