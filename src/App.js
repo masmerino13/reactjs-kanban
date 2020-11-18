@@ -4,6 +4,7 @@ import {Container, Row, Col } from "react-bootstrap"
 
 import { Sidebar } from './components/Sidebar'
 import { Toolbar } from './components/Toolbar'
+import { Kaban } from './components/Kaban'
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
               </Col>
               <Col  xs={10} className='MainContainer'>
                 <Toolbar />
+                <Kaban />
               </Col> 
           </Row>
         </Container>

@@ -14,12 +14,15 @@
     "react-dom": "^17.0.1"
   },
   "dependencies": {
+    "array-move": "^3.0.1",
     "bootstrap": "^4.5.3",
+    "lodash": "^4.17.20",
     "material-icons-react": "^1.0.4",
     "node-sass": "^5.0.0",
     "poi": "^12.10.3",
     "react-bootstrap": "^1.4.0",
     "react-hot-loader": "^4.13.0",
+    "react-sortable-hoc": "^1.11.0",
     "sass-loader": "^10.1.0"
   }
 }
