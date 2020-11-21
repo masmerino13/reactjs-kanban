@@ -31,4 +31,4 @@ const SortableList = SortableContainer(
   )
 )
 
-export default React.memo(SortableList);
+export default SortableList;

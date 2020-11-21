@@ -12,7 +12,7 @@ const SortableItem = SortableElement(({ item }) => <div className='t_sortableIte
   <div className='t_sortableItem_Title'>{item.title}</div>
   <div className='t_sortableItemFooter'>
     <UserShortName keyword={item.assignee} />
-<div className='t_sortableItemFooter_Due'>Due: { formatDistance(item.due, new Date(2020, 11, 18)) }</div>
+<div className='t_sortableItemFooter_Due'>Due date: { item.due }</div>
   </div>
 </div>)
 

@@ -1,0 +1,29 @@
+.t_KabanActions {
+  display: flex;
+  padding: 1rem 1rem 0 1rem;
+
+  .form-group {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    font-size: $body_sm;
+
+    .form-control {
+      font-size: $body_sm;
+    }
+
+    &:not(:last-child) {
+      margin-right: 4px;
+    }
+  }
+
+  &_Tag {
+    select {
+      margin-left: 4px;
+    }
+  }
+
+  &_RefreshFilters {
+    cursor: pointer;
+  }
+}

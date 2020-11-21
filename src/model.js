@@ -5,10 +5,15 @@ import taskService from './api/tasks.service'
 export default {
   collections: {
     list: [],
+    results: [],
 
     // actions
     fetched: action((state, payload) => {
       state.list = payload
+    }),
+
+    setResults: action((state, payload) => {
+      state.results = payload
     }),
 
     // thunks
@@ -28,6 +33,7 @@ export default {
       }
 
       actions.fetched(collections)
+      actions.setResults(collections)
     })
   },
 

@@ -4,11 +4,12 @@ import _isEmpty from 'lodash/isEmpty'
 import { useStoreState, useStoreActions } from 'easy-peasy'
 
 import { SortableList } from './sortableList'
+import { KabanActions } from './kabanActions'
 
 const SortableComponent = () => {
   const [isHovering, setIsHovering] = useState('')
   const [collections, setCollection] = useState([])
-  const list = useStoreState((state) => state.collections.list)
+  const list = useStoreState((state) => state.collections.results)
   const updateTask = useStoreActions(actions => actions.tasks.updateTask)
 
   useEffect(() => {
@@ -25,7 +26,7 @@ const SortableComponent = () => {
     })
   }, [])
 
-  const onSortEnd = ({ oldIndex, newIndex, collection, ...plus }) => {
+  const onSortEnd = ({ oldIndex, newIndex, collection }) => {
     const hoveredCollection = collections.find(co => { return co.key === isHovering})
     const parentCollection = collections.find(co => { return co.key === collection})
 
@@ -74,6 +75,8 @@ const SortableComponent = () => {
   }
 
   return (
+    <>
+    <KabanActions searchResult={setCollection} dataset={collections}  />
     <div style={{ display: "flex", flexDirection: "row" }}>
       <SortableList
         collections={collections}
@@ -82,7 +85,8 @@ const SortableComponent = () => {
         isHovering={isHovering}
       />
     </div>
+    </>
   )
 }
 
-export default SortableComponent
+export default React.memo(SortableComponent)

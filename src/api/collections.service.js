@@ -6,7 +6,7 @@ export default (() => {
   return {
     fetchCollections: () => {
       return ref
-        .orderBy('order')
+        .orderBy('order', 'desc')
         .get()
         .then(snapshot => ({ status: 'success', data: snapshot }))
         .catch((error) => ({ status: 'error', error: error }))
