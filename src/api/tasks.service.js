@@ -22,5 +22,11 @@ export default (() => {
       .then(snapshot => ({ status: 'success', data: snapshot }))
       .catch((error) => ({ status: 'error', error: error }))
     },
+
+    updateTask: (data, taskId) => {
+      return ref.doc(taskId).update(data)
+        .then(snapshot => ({ status: 'success', data: snapshot }))
+        .catch((error) => ({ status: 'error', error: error }));
+    }
   }
 })()

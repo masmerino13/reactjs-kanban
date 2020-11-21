@@ -74,6 +74,18 @@ export default {
       }
 
       return response
+    }),
+
+    updateTask: thunk(async (actions, payload) => {
+      const response = await taskService.updateTask(payload.data, payload.id)
+
+      if (response.status === 'error') {
+        actions.setError(response.error)
+      } else {
+        actions.setError(null)
+      }
+
+      return response
     })
   },
 

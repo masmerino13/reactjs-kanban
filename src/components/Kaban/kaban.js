@@ -1,20 +1,31 @@
-import React, { useState, useEffect } from "react";
-import arrayMove from 'array-move';
-import _isEmpty from 'lodash/isEmpty';
-import { useStoreState } from 'easy-peasy';
+import React, { useState, useEffect, useCallback } from "react"
+import arrayMove from 'array-move'
+import _isEmpty from 'lodash/isEmpty'
+import { useStoreState, useStoreActions } from 'easy-peasy'
 
-import { SortableList } from './sortableList';
+import { SortableList } from './sortableList'
 
 const SortableComponent = () => {
-  const [isHovering, setIsHovering] = useState('');
+  const [isHovering, setIsHovering] = useState('')
   const [collections, setCollection] = useState([])
-  const list = useStoreState((state) => state.collections.list);
+  const list = useStoreState((state) => state.collections.list)
+  const updateTask = useStoreActions(actions => actions.tasks.updateTask)
 
   useEffect(() => {
     setCollection(list)
   })
 
-  const onSortEnd = ({ oldIndex, newIndex, collection }) => {
+  const handleTaskUpdate = useCallback(task => {
+    updateTask({
+      data: {
+        order: task.order,
+        collection: task.collection
+      },
+      id: task.id
+    })
+  }, [])
+
+  const onSortEnd = ({ oldIndex, newIndex, collection, ...plus }) => {
     const hoveredCollection = collections.find(co => { return co.key === isHovering})
     const parentCollection = collections.find(co => { return co.key === collection})
 
@@ -24,8 +35,11 @@ const SortableComponent = () => {
         const newCollectionsSet = collections.map(co => {
           if (co.key === isHovering) {
             co.items = arrayMove(co.items, oldIndex, newIndex)
+            co.items[newIndex] = {...co.items[newIndex], order: newIndex}
+
+            handleTaskUpdate(co.items[newIndex])
           }
-  
+
           return co
         })
 
@@ -47,6 +61,9 @@ const SortableComponent = () => {
           co.items = parentItems
         } else if (co.key === isHovering) {
           co.items = hoveredItems
+          co.items[newIndex] = {...co.items[newIndex], order: newIndex, collection: co.id}
+
+          handleTaskUpdate(co.items[newIndex])
         }
 
         return co
@@ -54,7 +71,7 @@ const SortableComponent = () => {
 
       setCollection(newCollectionsSet)
     }
-  };
+  }
 
   return (
     <div style={{ display: "flex", flexDirection: "row" }}>
@@ -65,7 +82,7 @@ const SortableComponent = () => {
         isHovering={isHovering}
       />
     </div>
-  );
-};
+  )
+}
 
-export default SortableComponent;
+export default SortableComponent
