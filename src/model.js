@@ -33,10 +33,15 @@ export default {
 
   tasks: {
     list: [],
+    error: null,
 
     // actions
     fetched: action((state, payload) => {
       state.list = payload
+    }),
+
+    setError: action((state, payload) => {
+      state.error = payload
     }),
 
     // thunks
@@ -51,9 +56,24 @@ export default {
 
           tasks.push(item)
         })
+
+        actions.fetched(tasks)
+        actions.setError(null) // Reset error
+      } else {
+        actions.setError(response.error)
+      }
+    }),
+
+    createTask: thunk(async (actions, payload) => {
+      const response = await taskService.createTask(payload)
+
+      if (response.status === 'error') {
+        actions.setError(response.error)
+      } else {
+        actions.setError(null)
       }
 
-      actions.fetched(tasks)
+      return response
     })
   },
 

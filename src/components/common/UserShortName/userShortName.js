@@ -7,8 +7,6 @@ import './userShortName.scss'
 
 const UserShortName = ({ keyword, className }) => {
   const shortName = _.chain(keyword).split(' ').map(part => part[0]).join('').value()
-
-  console.log('short', shortName)
   
   return (
     <div className={

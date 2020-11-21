@@ -1,37 +1,17 @@
-.MainSidebar {
+.t_TopBar {
   display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  min-height: 100vh;
-  transition: margin .25s ease-out;
-  background-color: $blue_300;
-  padding: 0;
+  align-items: center;
 
-  &Heading {
-    padding: 0.875rem 1.25rem;
-    font-size: 1.2rem;
-    background-color: $blue_500;
-    color: $white;
-    font-weight: 600;
-  }
-
-  &Item {
-    padding: 10px 8px;
-    color: $white;
+  .nav-item {
+    display: flex;
+    align-items: center;
+    font-size: $body_sm;
+    padding: 2px 4px;
     cursor: pointer;
-    transition: all .25s ease-out;
+    transition: all 0.3s ease;
 
     &:hover {
-      background-color: $blue_200;
+      background-color: $light_blue;
     }
-  }
-
-  &Autor {
-    text-align: center;
-    color: $white;
-    font-size: $body_sm;
-    background-color: $blue_500;
-    margin: 0;
-    padding: 4px 0;
   }
 }

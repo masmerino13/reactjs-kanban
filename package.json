@@ -20,6 +20,7 @@
     "date-fns": "^2.16.1",
     "easy-peasy": "^4.0.1",
     "firebase": "^8.0.2",
+    "formik": "^2.2.5",
     "lodash": "^4.17.20",
     "material-icons-react": "^1.0.4",
     "node-sass": "^5.0.0",
@@ -27,6 +28,7 @@
     "react-bootstrap": "^1.4.0",
     "react-hot-loader": "^4.13.0",
     "react-sortable-hoc": "^1.11.0",
+    "react-toastify": "^6.1.0",
     "sass-loader": "^10.1.0"
   }
 }

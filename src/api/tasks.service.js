@@ -11,5 +11,16 @@ export default (() => {
         .then(snapshot => ({ status: 'success', data: snapshot }))
         .catch((error) => ({ status: 'error', error: error }))
     },
+
+    createTask: data => {
+      /**
+       * All new task added to the To Do collection by default
+       */
+      data.collection = '5kjBunTkrH60Y449o8Sr'
+
+      return ref.add(data)
+      .then(snapshot => ({ status: 'success', data: snapshot }))
+      .catch((error) => ({ status: 'error', error: error }))
+    },
   }
 })()
