@@ -11,7 +11,14 @@
 
   &_Title {
     font-size: $body_sm;
-    padding-bottom: 10px;
+    padding-bottom: 6px;
+  }
+
+  &_Tag {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 6px;
   }
 
   &Footer {

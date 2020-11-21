@@ -17,13 +17,15 @@ const SortableComponent = () => {
   })
 
   const handleTaskUpdate = useCallback(task => {
-    updateTask({
-      data: {
-        order: task.order,
-        collection: task.collection
-      },
-      id: task.id
-    })
+    if (task.id) {
+      updateTask({
+        data: {
+          order: task.order,
+          collection: task.collection
+        },
+        id: task.id
+      })
+    }
   }, [])
 
   const onSortEnd = ({ oldIndex, newIndex, collection }) => {
