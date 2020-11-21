@@ -1,10 +1,12 @@
-import React, { useRef } from "react"
+import React, { useRef, useState } from "react"
 import PropTypes from "prop-types"
 import _ from "lodash"
-import { Formik, Field, Form } from 'formik'
+import { Formik, Field, Form, useFormikContext } from 'formik'
 import { useStoreActions, useStoreState } from 'easy-peasy'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.min.css'
 
 import { Dialog } from '../Dialog'
 
@@ -38,6 +40,15 @@ const AddTaskDialog = ({ show, setShow }) => {
     toast.error('Ouch! Error creating the new task.')
   }
 
+  const DatePickerField = ({ name }) => {
+    const formik = useFormikContext();
+    const field = formik.getFieldProps(name);
+  
+    return (
+      <DatePicker selected={field.value} onChange={value => formik.setFieldValue(name, value)} />
+    );
+  }
+
   return (
     <>
       <Dialog
@@ -54,10 +65,10 @@ const AddTaskDialog = ({ show, setShow }) => {
         <Formik
           innerRef={formRef}
           initialValues={{
-            title: 'Do this task number',
-            description: 'Lorem upsum text here',
-            assignee: 'Jon Doe',
-            due: 1605922941695,
+            title: '',
+            description: '',
+            assignee: '',
+            dueDate: new Date(),
             tag: 'seo-article',
           }}
           onSubmit={handleSaveTask}
@@ -72,8 +83,8 @@ const AddTaskDialog = ({ show, setShow }) => {
             <label htmlFor="assignee">Assigne To</label>
             <Field id="assignee" name="assignee" placeholder="Jhon Doe" />
 
-            <label htmlFor="due">Due Date</label>
-            <Field id="due" name="due" type={"number"}/>
+            <label htmlFor="dueDate">Due Date</label>
+            <DatePickerField name='dueDate' />
 
             <label htmlFor="tag">Tag</label>
             <Field as="select" name="tag">
