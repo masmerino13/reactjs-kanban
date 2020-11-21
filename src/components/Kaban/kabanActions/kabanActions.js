@@ -56,9 +56,9 @@ const KabanActions = () => {
         <Form.Control onChange={debouncedSearchBox} type="text" placeholder="Search by title" />
       </Form.Group>
       <Form.Group className='t_KabanActions_Tag'>
-        Filter by
+        Showing
         <Form.Control as="select" onChange={debouncedSearchTag} defaultValue={selectedTag}>
-          <option value="">Show All</option>
+          <option value="">All</option>
           <option value="seo-article">SEO article</option>
           <option value="long-form">Long form</option>
           <option value="blog-post">Blog post</option>
