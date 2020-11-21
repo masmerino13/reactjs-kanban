@@ -10,9 +10,20 @@
     padding: 4px;
 
     &_Title {
+      display: flex;
+      align-items: center;
       font-size: 0.9rem;
       font-weight: 600;
       padding-bottom: 8px;
+    }
+
+    &_Badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 4px;
+      font-size: 0.6rem;
+      line-height: 0.6rem;
     }
   }
 }
