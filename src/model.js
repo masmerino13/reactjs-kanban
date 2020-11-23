@@ -63,8 +63,6 @@ export default {
     createTask: thunk(async (actions, payload) => {
       const response = await taskService.createTask(payload)
 
-      console.log('response thunk', response)
-
       if (response.status !== 'Created') {
         actions.setError(response.error)
       } else {
@@ -76,8 +74,6 @@ export default {
 
     updateTask: thunk(async (actions, payload) => {
       const response = await taskService.updateTask(payload.data, payload.id)
-
-      console.log('response', response)
 
       if (response.status === 'OK') {
         actions.setError(response.error)

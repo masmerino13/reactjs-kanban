@@ -9,7 +9,6 @@ export default (() => {
     },
 
     createTask: async data => {
-      console.log('the data', data)
       /**
        * All new task added to the To Do collection by default
        */
