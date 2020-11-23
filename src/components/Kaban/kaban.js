@@ -2,6 +2,8 @@ import React, { useState, useEffect, useCallback } from "react"
 import arrayMove from 'array-move'
 import _isEmpty from 'lodash/isEmpty'
 import { useStoreState, useStoreActions } from 'easy-peasy'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 import { SortableList } from './sortableList'
 import { KabanActions } from './kabanActions'
@@ -25,6 +27,8 @@ const SortableComponent = () => {
         },
         id: task.id
       })
+
+      toast('Board updated')
     }
   }, [])
 
@@ -87,6 +91,7 @@ const SortableComponent = () => {
         isHovering={isHovering}
       />
     </div>
+    <ToastContainer />
     </>
   )
 }

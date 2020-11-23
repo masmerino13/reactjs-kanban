@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "array-move": "^3.0.1",
+    "axios": "^0.21.0",
     "bootstrap": "^4.5.3",
     "classnames": "^2.2.6",
     "date-fns": "^2.16.1",

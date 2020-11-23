@@ -27,7 +27,7 @@ const AddTaskDialog = ({ show, setShow }) => {
 
     const { status } = await saveTask(data)
 
-    if (status === 'success') {
+    if (status === 'Created') {
       toast.success('The new task was added successsfully')
 
       initialise()

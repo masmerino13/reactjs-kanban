@@ -10,7 +10,7 @@ import { UserShortName } from '../../common';
 import './sortableItem.scss'
 
 const SortableItem = SortableElement(({ item }) => {
-  if (!item) {
+  if (!item.id) {
     return
   }
 
@@ -22,7 +22,7 @@ const SortableItem = SortableElement(({ item }) => {
       </div>
       <div className='t_sortableItemFooter'>
         <UserShortName keyword={item.assignee} />
-    <div className='t_sortableItemFooter_Due'>Due date: { format(item.dueDate.toDate(), 'MM/dd/yyyy') }</div>
+    <div className='t_sortableItemFooter_Due'>Due date: { format(new Date(item.dueDate), 'MM/dd/yyyy') }</div>
       </div>
     </div>
   )

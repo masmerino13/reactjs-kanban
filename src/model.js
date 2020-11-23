@@ -1,6 +1,6 @@
 import { action, thunk } from 'easy-peasy'
-import collectionService from './api/collections.service'
-import taskService from './api/tasks.service'
+import collectionService from './services/collections.service'
+import taskService from './services/tasks.service'
 
 export default {
   collections: {
@@ -20,15 +20,13 @@ export default {
     fetchCollections: thunk(async (actions, payload, { getStoreState }) => {
       const storeState = getStoreState()
       let collections = []
-      const response = await collectionService.fetchCollections()
+      const { status, data } = await collectionService.fetchCollections()
 
-      if (response.status === 'success') {
-        response.data.forEach(async collection => {
-          const co = collection.data()
-          co.id = collection.id
-          co.items = storeState.tasks.list.filter(task => task.collection === co.id)
+      if (status === 'OK') {
+        data.forEach(collection => {
+          collection.items = storeState.tasks.list.filter(task => task.collection === collection.id)
 
-          collections.push(co)
+          collections.push(collection)
         })
       }
 
@@ -52,28 +50,22 @@ export default {
 
     // thunks
     fetchAllTasks: thunk(async actions => {
-      let tasks = []
-      const response = await taskService.fetchAllTasks()
+      const { status, data } = await taskService.fetchAllTasks()
 
-      if (response.status === 'success') {
-        response.data.forEach(async task => {
-          const item = task.data()
-          item.id = task.id
-
-          tasks.push(item)
-        })
-
-        actions.fetched(tasks)
+      if (status === 'OK') {
+        actions.fetched(data)
         actions.setError(null) // Reset error
       } else {
-        actions.setError(response.error)
+        actions.setError(error)
       }
     }),
 
     createTask: thunk(async (actions, payload) => {
       const response = await taskService.createTask(payload)
 
-      if (response.status === 'error') {
+      console.log('response thunk', response)
+
+      if (response.status !== 'Created') {
         actions.setError(response.error)
       } else {
         actions.setError(null)
@@ -85,7 +77,9 @@ export default {
     updateTask: thunk(async (actions, payload) => {
       const response = await taskService.updateTask(payload.data, payload.id)
 
-      if (response.status === 'error') {
+      console.log('response', response)
+
+      if (response.status === 'OK') {
         actions.setError(response.error)
       } else {
         actions.setError(null)
