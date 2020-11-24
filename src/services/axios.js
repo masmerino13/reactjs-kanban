@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-    baseURL: 'http://localhost:3030'
+    baseURL: 'https://tasknator-api.herokuapp.com'
 })
 
 export default instance
